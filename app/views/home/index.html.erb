@@ -1,0 +1,31 @@
+<p> Home Page </p>
+<!-- link adding for user login/logout -->
+<% if current_user.present? %>
+  <%= link_to "sign out", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Log in", new_user_session_path %><br />
+<% end %>
+<br />
+<% if current_user.domains.count < GeneralConfig.domain_limit %>
+  <%= link_to "Add Domain", new_domain_path %>
+<% end %>
+
+<table>
+	<tr>
+  	<th> Url </th>
+  	<th> Domain Rank </th>
+  	<th> High Chart </th>
+  	<th> Edit </th>
+  	<th> Destroy </th>
+	</tr>
+<% current_user.domains.each do |domain| %>
+  <tr>
+  <td><%= domain.url %></td>
+  <td><%= domain.domain_ranks.last.present? ? domain.domain_ranks.last.rank : nil %></td>
+  <td><%= link_to 'Show', domain %></td>
+  <td><%= link_to 'Edit', edit_domain_path(domain) %></td>
+  <td><%= link_to 'Destroy', domain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+

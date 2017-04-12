@@ -1,0 +1,11 @@
+<%= form_for @config, url: admin_general_configs_path,:method => :POST, html: {class: 'form-horizontal'} do |f| %>
+  <pre>
+  <p>
+  Cron Time: <%= f.number_field :cron_time, placeholder: 'Cron Time', required: true, in: 0..23 %>
+  
+  Domain Limit: <%= f.number_field :domain_limit, placeholder: 'Domain Limit', required: true, max: 999 %>
+  </p>
+  <button type="submit" class="btn btn-blue">Submit</button>
+  </pre>
+  <div><%= link_to 'Dashboard', admin_dashboard_path %></div>
+<% end %>

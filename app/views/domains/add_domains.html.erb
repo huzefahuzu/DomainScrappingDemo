@@ -1,0 +1,10 @@
+<p> page for adding domains </p>
+<%= form_tag save_domains_domains_path, method: :post do %>
+  <%= label_tag :domain_1, "Domain 1:" %>
+  <%= text_field_tag :domain_1 %></br>
+  <%= label_tag :domain_2, "Domain 2:" %>
+  <%= text_field_tag :domain_2 %></br>
+  <%= label_tag :domain_3, "Domain 3:" %>
+  <%= text_field_tag :domain_3 %></br>
+  <%= submit_tag "Add Domains" %></br>
+<% end %>
